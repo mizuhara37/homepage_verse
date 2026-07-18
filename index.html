@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="mdui-theme-dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MIZUHARA::VERSE</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="mdui.css">
+  <script src="mdui.global.js"></script>
+  <link rel="icon" type="image/png" href="src/image/MyGO_icon.svg">
+
+</head>
+
+<body>
+  <script>
+    s = "";
+  </script>
+  <!DOCTYPE html>
+  <html lang="en" data-color-scheme="dark">
+
+  <body>
+    <!-- <div class="content">
+      <audio id="myAudio" preload="none"></audio>
+      <mdui-dialog class="example-headline-slot">
+        <span slot="headline">技术宅拯救世界<br>TECH OTAKUS SAVE THE WORLD<br>技術オタクが世界を救う</span>
+        <mdui-button slot="action" variant="tonal" onclick="dialog.open = false;
+            var m=0,n=6
+            var x=Math.random()*(m-n)+n;
+            x=Math.round(x)
+            s='src/music/抽卡.mp3';
+            if(x==2) s='src/music/60%的日常.mp3';
+            else if(x==3)s='src/music/TimeToPlay.mp3'
+            else if(x==4)s='src/music/SeafloorPetal.mp3'
+            else if(x==5)s='src/music/60%的日常悠闲.mp3'
+            else if(x==6)s='src/music/60%的日常自由.mp3'
+            localStorage.setItem('music',s);
+            console.log(x,' ',s);
+            document.getElementById('myAudio').src=s;
+            document.getElementById('myAudio').loop=true;
+            document.getElementById('myAudio').play();">YES</mdui-button>
+      </mdui-dialog> -->
+
+
+    <script>
+      const dialog = document.querySelector(".example-headline-slot");
+      const openButton = dialog.nextElementSibling;
+      dialog.open = true
+      openButton.addEventListener("click", () => dialog.open = true);
+    </script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body>
+
+      <div id="container" class="Accueil">
+        <div class="containerBG"></div>
+        <div class="vector Vleft"></div>
+        <div class="vector Vright"></div>
+        <div id="navbarContainer">
+          <nav>
+            <ul>
+              <li class="active"><a href="/index.html"><span class="i-Accueil"></span>HOME</a></li>
+              <li><a href="https://blog.mizuhara37.cn"><span class="i-Lexique"></span>BLOG</a></li>
+              <li><a href="https://github.com/mizuhara37"><span class="i-Timeline"></span>GITHUB</a></li>
+              <!-- <li><a href="https://games.mizuhara37.icu"><span class="i-Localisations"></span>GAMES</a></li>
+              <li><a onclick=""><span class="i-Personnages"></span>ME</a></li>-->
+              <li><a onclick="dialog3.open = true"><span class="i-Personnages"></span>ABOUT</a></li>
+            </ul>
+          </nav>
+        </div>
+        <mdui-dialog stacked-actions close-on-overlay-click fullscreen headline="ABOUT" class="example-stacked-actions">
+          <!-- <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/抽卡.mp3';document.getElementById('myAudio').play()">抽卡
+            - ZZZ</mdui-button>
+          <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/60%的日常.mp3';document.getElementById('myAudio').play()">60%的日常
+            - ZZZ</mdui-button>
+          <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/60%的日常自由.mp3';document.getElementById('myAudio').play()">60%的日常·自由
+            - ZZZ</mdui-button>
+          <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/60%的日常悠闲.mp3';document.getElementById('myAudio').play()">60%的日常·悠闲
+            - ZZZ</mdui-button>
+          <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/TimeToPlay.mp3';document.getElementById('myAudio').play()">Time
+            To Play - ZZZ</mdui-button>
+          <mdui-button slot="action" variant="text"
+            onclick="document.getElementById('myAudio').src='src/music/SeafloorPetal.mp3';document.getElementById('myAudio').play()">Seafloor
+            Petal - YoruKura</mdui-button> -->
+          <h1>666666666666666666666666666666666666666666666666666666666666666</h1>
+        </mdui-dialog>
+        <script>
+          const dialog2 = document.querySelector(".example-stacked-actions");
+          const musicdia = dialog.nextElementSibling;
+
+          musicdia.addEventListener("click", () => dialog2.open = true);
+        </script>
+
+
+        <mdui-dialog close-on-overlay-click headline="ABOUT" class="example-action" fullscreen description="
+        Hi! Here is MIZUHARA::VERSE, an area I can tell you where is my blog, who am I, and what I'm doing currently.
+        ">
+        <h3> Some Statement</h5>
+        <p>The homepage is adapted by HONKAI STAR RAIL - personal project
+        A Pen created on CodePen.io. Original URL: [https://codepen.io/SIXTINErpg/pen/dyLjNXO](https://codepen.io/SIXTINErpg/pen/dyLjNXO).</p>
+        <br>
+        <p>The dialog is powered by MDUI</p>
+          <mdui-button slot="action" variant="text" onclick="dialog3.open = false">Close</mdui-button>
+        </mdui-dialog>
+
+
+        <script>
+          const dialog3 = document.querySelector(".example-action");
+          const openButton3 = dialog3.nextElementSibling;
+
+          openButton.addEventListener("click", () => dialog3.open = true);
+        </script>
+
+        <div class="contenu">
+          <h1>MIZUHARA::VERSE</h1>
+          <p>
+            Here is MIZUHARA::VERSE. Choose your next station or just for a rest.
+          </p>
+        </div>
+
+
+      </div>
+    </body>
+
+  </html>
+  <script src="./script.js"></script>
+</body>
+
+</html>

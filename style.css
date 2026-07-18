@@ -1,0 +1,380 @@
+:root {
+    --DinExp:'D-DIN Exp', "sans-serif";
+    --spacegrotesk:'Space Grotesk', "sans-serif";
+    --rubik:'rubik', "sans-serif";
+    --arial:'arial', "sans-serif";
+    --fontawesome:'Font Awesome 6 Free', 'Font Awesome 6 Brands';
+    
+    --link: #8383C0;
+    --purple: #8383C0;  
+
+    --success: #03A65A;
+    --help: #0070E0;
+    --danger: #DB3056;
+    --warning: #FC8621;
+
+    --shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.25);
+
+    --white:#fff;
+    --whiteO:255, 255, 255;
+    --black:#000;
+    --black0: 0, 0, 0;
+    --scrollbar: 0, 0, 0;
+}
+
+:root[data-color-scheme="dark"] {
+
+    /*couleurs*/
+    --primary: #1c1c1fb8;
+    --secondary: #15161874;
+    --tertiary: #101112;
+    --text: #CEDBE3;
+    --yellow: #EB9B38;
+    --blue: #2DFDF6;
+
+    /*image*/
+    --background:url('src/image/background.jpg');
+
+    /*filtre image*/
+    --svgColor:brightness(0) invert(1);
+
+    /*icon switch theme*/
+    --themeIcon:'\f185';
+
+}
+
+:root[data-color-scheme="light"] {
+
+    /*couleurs*/
+    --primary: #d8e2e98e;
+    --secondary: #e8eef284;
+    --tertiary: #FAFBFC;
+    --text: #27282B;
+    --yellow: #EB9B38;
+    --blue: #8383C0;
+
+    /*image*/
+    --background:url('src/image/background.jpg');
+
+    /*filtre image*/
+    --svgColor:brightness(0) invert(0);
+
+    /*icon switch theme*/
+    --themeIcon:'\f186';
+}
+
+.testsvg {fill:red;}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image:var(--background);
+    background-size: cover;
+    background-attachment: fixed;
+    margin:50px;
+}
+
+/*bloc général*/
+#container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-end;
+    background: var(--primary);
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 100px);
+    border-radius: 35px;
+    padding:40px;
+}
+
+u {text-decoration: none;border-bottom: 2px solid var(--yellow);}
+b {color:var(--blue);}
+
+/*************************
+IMAGE BACKGROUND
+*************************/
+.containerBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    height: 100%;
+}
+
+.containerBG::before,.containerBG:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+.containerBG::before {filter: grayscale(100%) saturate(1000%) opacity(40%) contrast(180%);}
+
+/*taille en fonction de la page*/
+.Accueil .containerBG {width: 40%;}
+.Lexique .containerBG {width: 30%;}
+
+/*image*/
+.Lexique .containerBG:before {background-image: url('img/lexique.png');}
+
+/*vecteurs en fond*/
+.vector {
+    position:absolute;
+
+    animation: rotate 280s linear infinite ;
+    background-size: cover;
+    filter:var(--svgColor);
+    width: 585px;
+    height: 585px;
+    content: ' ';
+}
+
+.Vleft {
+    transform: rotate(356deg);
+    left: -200px;
+    bottom: -200px;
+}
+
+.Vright {
+    transform: rotate(97deg);
+    right: -200px;
+    bottom: -300px;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+
+/*************************
+NAVBAR
+*************************/
+#navbarContainer {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: fit-content;
+    z-index:999;
+    background:var(--secondary);
+    border-radius: 35px;
+    padding:25px;
+}
+
+nav ul {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap:20px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color:var(--text);
+}
+
+nav ul a {
+    font-family: var(--DinExp);
+    font-weight: 500;
+    color:var(--text);
+    text-decoration:none;
+}
+
+nav ul li.active a {
+    background:var(--tertiary);
+    box-shadow: inset 0px 0px 0px 3px var(--secondary);
+    border: 2px dashed var(--yellow);
+    border-radius:35px;
+    padding:10px 15px;
+    color:var(--yellow);
+}
+
+nav ul li.active a:before, nav ul li.active a:after {content: ' • ';}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--tertiary);
+    border: none;
+    border-radius: 100%;
+    padding: 15px;
+    font-family: var(--fontawesome);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+#theme-toggle:before {content:var(--themeIcon);}
+
+/*************************
+CONTENU DE LA PAGE
+*************************/
+.contenu {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap:15px;
+    width: 70%;
+    height: 100vh; /* Hauteur égale à 100% de la hauteur de la fenêtre */
+    margin-top: 25px;
+    overflow: hidden; /* Pour que le débordement du paragraphe soit pris en compte */
+
+}
+
+
+.Lexique {
+
+    #lexique-list {
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-right: 25px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(var(--scrollbar), 0.3) rgba(var(--scrollbar), 0.3);
+
+    }
+
+    h2 {
+        margin:0;
+        font-family: var(--DinExp);
+        font-size:45px;
+        font-weight: 600;
+        color: var(--yellow);
+    }
+    
+    .mot-lexique {
+        background: var(--secondary);
+        color: var(--text);
+        font-family: var(--DinExp);
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    h3 {
+        margin:0;
+        font-family: var(--DinExp);
+        font-size:24px;
+        font-weight: 600;
+        color: var(--yellow);
+    }
+}
+
+
+h1 {
+    color:var(--text);
+    font-family: var(--DinExp);
+    margin:0px;
+    font-size: 6vw; /* 1.6rem * 8 = 12.8rem = 128px */
+    text-transform: uppercase;
+    text-align:right;
+    line-height: 7vw;
+}
+
+.description {
+    background:red;
+    height:100vh;
+    overflow:auto;
+    margin:25px;
+    padding:25px;
+    box-sizing:border-box;
+
+    border-radius:20px;
+}
+
+p {
+    margin: 0;
+    background: var(--secondary);
+    font-size: 18px;
+    font-family: var(--DinExp);
+    color: var(--text);
+    border-radius: 20px;
+    overflow: auto;
+    border: 25px solid var(--secondary);
+}
+
+
+
+#navbarContainer span:before {
+    var(--text);
+    font-family:var(--fontawesome); 
+    font-weight: 900;
+    display: none;
+}
+
+.i-Accueil:before {content:'\f015';}
+.i-Lexique:before {content:'\f02d';}
+.i-Timeline:before {content:'\e29c';}
+.i-Personnages:before {content:'\f0c0';}
+.i-Localisations:before {content:'\f3c5';}
+.i-Factions:before {content:'\e533';}
+.i-Voies:before {content:'\f015';}
+.i-Especes:before {content:'\f015';}
+.i-Aoins:before {content:'\f684';}
+
+
+
+/********************************
+MEDIAS QUERIES
+********************************/
+@media screen and (max-width: 710px) {
+    #container {flex-direction: row-reverse;gap: 25px;}
+    .containerBG {display:none;}
+    .vector {display:none;}
+
+    #navbarContainer {height: 100%;justify-content: center;}
+
+    #navbarContainer span:before {display:inline-block;}
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    nav ul a {font-size:0;}
+
+    nav ul li.active a {
+        background:none;
+        box-shadow:none;
+        border:none;
+        border-radius:none;
+        padding:0;
+        color:var(--yellow);
+    }
+
+    .contenu {
+        width: 100%;
+        margin-top:0px;
+        height:calc(100vh - 190px);
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    body {margin:0;}
+
+    #container {
+        border-radius: 0px;
+        height:100vh;
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    #navbarContainer {border-radius:10px;}
+
+    .contenu {height:calc(100vh - 40px);}
+}
