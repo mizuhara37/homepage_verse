@@ -389,41 +389,134 @@ ABOUT 弹窗
 
 
 
+/*************************
+移动端折叠菜单按钮
+*************************/
+#menu-toggle {
+    display: none;             /* 桌面端隐藏 */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: var(--tertiary);
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+}
+
+body.menu-open #menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.menu-open #menu-toggle span:nth-child(2) { opacity: 0; }
+body.menu-open #menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+
+/*************************
+菜单随音乐轻微律动
+*************************/
+@keyframes music-sway {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-2px) rotate(-0.5deg); }
+    50%      { transform: translateY(0) rotate(0deg); }
+    75%      { transform: translateY(2px) rotate(0.5deg); }
+}
+
+body.music-playing #navbarContainer {
+    animation: music-sway 1.6s ease-in-out infinite;
+}
+
+body.music-playing #menu-toggle {
+    animation: music-sway 1.6s ease-in-out infinite;
+}
+
+
+
 /********************************
 MEDIAS QUERIES
 ********************************/
 @media screen and (max-width: 710px) {
-    #container {flex-direction: row-reverse;gap: 25px;}
+    body {background-attachment: scroll;background-position: center;}
+
+    #container {flex-direction: column;align-items: stretch;}
+
     .containerBG {display:none;}
     .vector {display:none;}
 
-    #navbarContainer {height: 100%;justify-content: center;}
+    #menu-toggle {display: flex;}
 
-    #navbarContainer span:before {display:inline-block;}
+    #navbarContainer {
+        display: none;
+        position: absolute;
+        top: 76px;
+        right: 20px;
+        z-index: 1000;
+        min-width: 176px;
+        padding: 10px;
+        background: var(--tertiary);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+    }
+
+    body.menu-open #navbarContainer {display: block;}
+
+    #navbarContainer span:before {display:inline-block;margin-right:10px;}
 
     nav ul {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         justify-content: flex-start;
-        gap: 15px;
+        gap: 6px;
     }
 
-    nav ul a {font-size:0;}
+    nav ul a {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
 
     nav ul li.active a {
         background:none;
         box-shadow:none;
         border:none;
-        border-radius:none;
-        padding:0;
+        border-radius:12px;
+        padding:10px 12px;
         color:var(--yellow);
     }
 
     .contenu {
         width: 100%;
-        margin-top:0px;
-        height:calc(100vh - 190px);
-        justify-content: flex-start;
+        height: auto;
+        flex: 1;
+        margin-top: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contenu h1 {
+        text-align: right;
+        font-size: 7vw;
+        line-height: 8.17vw;
+    }
+
+    .contenu p {
+        text-align: center;
     }
 }
 
@@ -438,6 +531,4 @@ MEDIAS QUERIES
     }
 
     #navbarContainer {border-radius:10px;}
-
-    .contenu {height:calc(100vh - 40px);}
 }
