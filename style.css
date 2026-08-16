@@ -370,6 +370,25 @@ ABOUT 弹窗
 
 
 
+/*************************
+白天（浅色主题）专属样式
+*************************/
+:root[data-color-scheme="light"] .contenu h1 {
+    color: #ffffff;   /* 标题大字：白色 */
+}
+
+:root[data-color-scheme="light"] .contenu p {
+    background: #e8f1f8b3;   /* 文字背景：淡天蓝，70% 不透明度 */
+    border-color: #e8f1f8b3;
+}
+
+:root[data-color-scheme="light"] nav ul li.active a {
+    border-color: var(--blue);   /* HOME 按钮外轮廓：淡蓝 */
+    color: var(--blue);          /* HOME 按钮文字：淡蓝 */
+}
+
+
+
 /********************************
 MEDIAS QUERIES
 ********************************/

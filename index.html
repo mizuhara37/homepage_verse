@@ -300,24 +300,21 @@
           }
         })();
       </script>
-      <mdui-dialog class="example-headline-slot">
-                <span slot="headline">Messagebox(Actually a music play button)</span>
-                <mdui-button href="#" class="btn" onclick="dialog.open = false;document.getElementById('bgm').play();">Continue</a>
-              </mdui-dialog>
+      <mdui-dialog class="example-headline-slot" headline="你好w">
+        <img id="greeting-img" src="" alt="随机表情" style="display:block;width:120px;height:120px;object-fit:contain;margin:0 auto 8px;">
+        <mdui-button slot="action" variant="filled" onclick="dialog.open = false;document.getElementById('bgm').play();">进入</mdui-button>
+      </mdui-dialog>
               
               
-              <script>
-                const dialog = document.querySelector(".example-headline-slot");
-                const openButton = dialog.nextElementSibling;
-                dialog.open=true
-                openButton.addEventListener("click", () => dialog.open = true);
-              </script>
-    <script>
-      const dialog = document.querySelector(".example-headline-slot");
-      const openButton = dialog.nextElementSibling;
-      dialog.open = true
-      openButton.addEventListener("click", () => dialog.open = true);
-    </script>
+      <script>
+        const dialog = document.querySelector(".example-headline-slot");
+        dialog.open = true;
+        // 随机表情：从 src/image/1.jpg ~ 8.jpg 中随机选一张
+        const greetingImg = document.getElementById('greeting-img');
+        if (greetingImg) {
+          greetingImg.src = 'src/image/' + (Math.floor(Math.random() * 8) + 1) + '.jpg';
+        }
+      </script>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
