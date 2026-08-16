@@ -45,16 +45,19 @@
 
 :root[data-color-scheme="light"] {
 
-    /*couleurs*/
-    --primary: #d8e2e98e;
-    --secondary: #e8eef284;
-    --tertiary: #FAFBFC;
-    --text: #27282B;
-    --yellow: #EB9B38;
-    --blue: #8383C0;
+    /*couleurs - 白天配色（自行设计：明亮的晨空蓝）*/
+    --primary: #e8f1f80d;   /* 主容器：淡天蓝，5% 不透明度 */
+    --secondary: #ffffffa8; /* 导航/段落底：磨砂白 */
+    --tertiary: #f7fbfe;    /* 强调底：极浅蓝白 */
+    --text: #26323f;        /* 文字：深蓝灰 */
+    --yellow: #f0a13a;      /* 强调黄：暖琥珀 */
+    --blue: #3b82d6;        /* 强调蓝：清透天蓝 */
 
-    /*image*/
-    --background:url('src/image/background.jpg');
+    /*image - 白天背景图路径留空，请在 index.html 顶部的 window.DAY_IMAGE 处填写 */
+    --background:url('');
+
+    /*页面底色（容器外）：纯白，覆盖 MDUI 默认的浅粉白背景*/
+    background-color: #ffffff;
 
     /*filtre image*/
     --svgColor:brightness(0) invert(0);
@@ -74,6 +77,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     margin:50px;
+    border-radius: 35px; /* 背景图圆角与 #container 保持一致 */
 }
 
 /*bloc général*/
@@ -326,6 +330,46 @@ p {
 
 
 
+/*************************
+ABOUT 弹窗
+*************************/
+.example-action .about-body {
+    background: var(--secondary);
+    border-radius: 24px;
+    padding: 28px 32px;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.example-action h3 {
+    margin: 22px 0 10px;
+    font-family: var(--DinExp);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--yellow);
+}
+
+.example-action h3:first-of-type {
+    margin-top: 0;
+}
+
+.example-action .about-body p {
+    margin: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.example-action a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 2px solid var(--yellow);
+}
+
+
+
 /********************************
 MEDIAS QUERIES
 ********************************/
@@ -365,7 +409,7 @@ MEDIAS QUERIES
 }
 
 @media screen and (max-width: 450px) {
-    body {margin:0;}
+    body {margin:0;border-radius:0;}
 
     #container {
         border-radius: 0px;

@@ -3,6 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
+  <script>
+    /* ============ 白天 / 夜晚 自动切换 ============ */
+    /* 白天 / 夜晚自动切换：白天使用下方音乐与背景图，夜晚保持原始样式与音乐。 */
+    window.DAY_MUSIC = 'https://music.163.com/song/media/outer/url?id=2070352215.mp3'; // 白天音乐（来自明日方舟）
+    window.DAY_IMAGE = 'src/image/daytime.jpg';                                          // 白天背景图（来自明日方舟终末地）
+
+    (function () {
+      var hour = new Date().getHours();
+      var isDay = hour >= 6 && hour < 18;   // 6:00 ~ 18:00 视为白天，可自行调整
+      window.__IS_DAY__ = isDay;
+
+      if (isDay) {
+        // 白天：使用浅色主题（配色见 style.css 里的 light 主题）
+        document.documentElement.setAttribute('data-color-scheme', 'light');
+        document.documentElement.classList.remove('mdui-theme-dark');
+        if (window.DAY_IMAGE) {
+          document.documentElement.style.setProperty('--background', "url('" + window.DAY_IMAGE + "')");
+        }
+      } else {
+        // 夜晚：使用原始深色主题与原始背景图
+        document.documentElement.setAttribute('data-color-scheme', 'dark');
+        document.documentElement.classList.add('mdui-theme-dark');
+      }
+    })();
+  </script>
   <title>MIZUHARA::VERSE</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="mdui.css">
@@ -267,6 +292,14 @@
             document.getElementById('myAudio').play();">YES</mdui-button>
       </mdui-dialog> -->
       <audio id="bgm" src="https://music.163.com/song/media/outer/url?id=2070351310.mp3"></audio>
+      <script>
+        (function () {
+          // 白天且已填写白天音乐路径时，替换为白天音乐；否则保持原始夜晚音乐
+          if (window.__IS_DAY__ && window.DAY_MUSIC) {
+            document.getElementById('bgm').src = window.DAY_MUSIC;
+          }
+        })();
+      </script>
       <mdui-dialog class="example-headline-slot">
                 <span slot="headline">Messagebox(Actually a music play button)</span>
                 <mdui-button href="#" class="btn" onclick="dialog.open = false;document.getElementById('bgm').play();">Continue</a>
@@ -338,16 +371,37 @@
         </script>
 
 
-        <mdui-dialog close-on-overlay-click headline="ABOUT" class="example-action" fullscreen description="
-        Hi! Here is MIZUHARA::VERSE, an area I can tell you where is my blog, who am I, and what I'm doing currently.
-        ">
-          <h3> Some Statement</h5>
-            <p>The homepage is adapted by HONKAI STAR RAIL - personal project
-              A Pen created on CodePen.io. Original URL:
-              [https://codepen.io/SIXTINErpg/pen/dyLjNXO](https://codepen.io/SIXTINErpg/pen/dyLjNXO).</p>
-            <br>
-            <p>The dialog is powered by MDUI</p>
-            <mdui-button slot="action" variant="text" onclick="dialog3.open = false">Close</mdui-button>
+        <mdui-dialog close-on-overlay-click headline="ABOUT" class="example-action" fullscreen>
+          <div class="about-body">
+            <h3>关于本站</h3>
+            <p>
+              这里是 <b>MIZUHARA::VERSE</b>——MIZUHARA 的个人主页。你可以在这里找到我的博客，
+              也可以了解我，以及我最近在做的事。
+            </p>
+
+            <h3>页面来源</h3>
+            <p>
+              本页面改编自 <b>HONKAI STAR RAIL</b> 风格的个人项目，原项目来自 CodePen：
+              <a href="https://codepen.io/SIXTINErpg/pen/dyLjNXO" target="_blank" rel="noopener">https://codepen.io/SIXTINErpg/pen/dyLjNXO</a>。
+              弹窗组件由 <b>MDUI</b> 提供支持。
+            </p>
+
+            <h3>素材来源</h3>
+            <p>
+              白天背景图：<b>明日方舟终末地</b><br>
+              夜晚背景图：<b>夜晚的水母不会游泳</b><br>
+              白天 / 夜晚音乐：<b>明日方舟</b>
+            </p>
+
+            <h3>版权声明</h3>
+            <p>
+              本站为个人项目，<b>未作任何商业用途</b>。页面中使用的图片、音乐等素材，
+              版权均归<b>原作者及版权方</b>所有；若涉及相关版权事宜，请及时与我联系，
+              我会第一时间删除相关内容。
+            </p>
+          </div>
+
+          <mdui-button slot="action" variant="text" onclick="dialog3.open = false">Close</mdui-button>
         </mdui-dialog>
 
 
