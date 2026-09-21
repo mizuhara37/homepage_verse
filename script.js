@@ -45,9 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 视频播放结束自动关闭（随后开始音乐）
+    // 进入页面即随机选择视频并开始预加载（只加载随机到的那一个）
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
+        bgVideo.src = 'src/video/' + pickVideo() + '.mp4';
         bgVideo.addEventListener('ended', function() {
             window.closeVideo();
         });
@@ -88,17 +89,13 @@ function hideVideoOverlay() {
     if (overlay) overlay.style.display = 'none';
 }
 
-// 点击“进入”后：显示并淡入全屏视频（带声音，懒加载）
+// 点击“进入”后：显示并淡入全屏视频（带声音）
 window.startVideo = function() {
     const whiteScreen = document.getElementById('white-screen');
     const overlay = document.getElementById('video-overlay');
     const video = document.getElementById('bg-video');
     if (overlay) {
         overlay.style.display = 'block';
-        // 懒加载：只加载随机到的视频
-        if (video && !video.src) {
-            video.src = 'src/video/' + pickVideo() + '.mp4';
-        }
         requestAnimationFrame(function() {
             overlay.classList.add('show');
         });
