@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 进入页面即加载指定视频并开始预加载（目前只播放这一个）
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
-        bgVideo.src = 'src/video/' + encodeURI('【25時、ナイトコードで。 × 巡音ルカ】ハイドレンジア（绣球花）【3DMV／『世界计划 多彩舞台』收录曲】.mp4');
+        bgVideo.src = 'src/video/5.mp4';
         bgVideo.addEventListener('ended', function() {
             window.closeVideo();
         });
