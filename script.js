@@ -89,6 +89,26 @@ function hideVideoOverlay() {
     if (overlay) overlay.style.display = 'none';
 }
 
+// 构建 LED 轮播内容：重复足够多份，保证单条宽度 ≥ 容器宽度，滚动时右侧不会出现空白
+function buildMarquee() {
+    const track = document.getElementById('marquee-track');
+    if (!track) return;
+    const wrap = track.parentElement;
+    const wrapWidth = (wrap ? wrap.getBoundingClientRect().width : 0) || window.innerWidth || 1200;
+    const unit = 'MIZUHARA::VERSE\u00a0\u00b7\u00a0';
+    // 先渲染一个 unit 用于测量宽度
+    track.innerHTML = '<span>' + unit + '</span>';
+    const oneWidth = track.firstElementChild.getBoundingClientRect().width || 1;
+    const need = Math.max(2, Math.ceil(wrapWidth / oneWidth) + 1);
+    const half = unit.repeat(need);
+    track.innerHTML = '<span>' + half + '</span><span>' + half + '</span>';
+}
+
+window.addEventListener('resize', function() {
+    const overlay = document.getElementById('video-overlay');
+    if (overlay && overlay.style.display === 'block') buildMarquee();
+});
+
 // 点击“进入”后：显示并淡入全屏视频（带声音）
 window.startVideo = function() {
     const whiteScreen = document.getElementById('white-screen');
@@ -96,6 +116,7 @@ window.startVideo = function() {
     const video = document.getElementById('bg-video');
     if (overlay) {
         overlay.style.display = 'block';
+        buildMarquee();
         requestAnimationFrame(function() {
             overlay.classList.add('show');
         });
