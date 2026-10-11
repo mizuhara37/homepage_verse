@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 进入页面即随机选择视频并开始预加载（只加载随机到的那一个）
+    // 进入页面即加载指定视频并开始预加载（目前只播放这一个）
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
-        bgVideo.src = 'src/video/' + pickVideo() + '.mp4';
+        bgVideo.src = 'src/video/' + encodeURI('【25時、ナイトコードで。 × 巡音ルカ】ハイドレンジア（绣球花）【3DMV／『世界计划 多彩舞台』收录曲】.mp4');
         bgVideo.addEventListener('ended', function() {
             window.closeVideo();
         });
